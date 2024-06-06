@@ -1,0 +1,191 @@
+<section>
+    <div class="">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Derma</a>
+                <button
+                    class="navbar-toggler d-lg-none"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavId"
+                    aria-controls="collapsibleNavId"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="signOut()">Sign Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="container mt-4">
+                <div class="row justify-content-center mb-3">
+                    <div class="col-md-6">
+                        <!-- <div class="card shadow p-2">
+                            <h2 class="text-center text-warning">add patient</h2>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" id="firstName" name="firstName" [(ngModel)]="firstName">
+                                <label for="firstName">first name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" id="lastName" name="lastName" [(ngModel)]="lastName">
+                                <label for="lastName">last name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="email" id="email" name="email" [(ngModel)]="email">
+                                <label for="email">email</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" id="phone" name="phone" [(ngModel)]="phone">
+                                <label for="phone">phone</label>
+                            </div>
+                            <button class="btn btn-outline-primary d-block ms-auto" (click)="addPatient()">Add patient</button>
+                        </div> -->
+                        <form [formGroup]="createPatientForm" class="example-form mt-4">
+                            <h2 class="text-center">Add Patient Form</h2>
+                            <div>
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>First Name</mat-label>
+                                    <input formControlName="firstName"   type="text" matInput placeholder="Enter patient first name">
+                                    <mat-error *ngIf="createPatientForm.get('firstName')?.errors?.['required']" >
+                                        First name is <strong>required</strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="createPatientForm.get('firstName')?.errors?.['minlength']">
+                                        Name length must be at least <strong>3</strong> characters
+                                    </mat-error>
+                                    <mat-error *ngIf="createPatientForm.get('firstName')?.errors?.['maxlength']">
+                                        Name length must be at most <strong>20</strong> characters
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Last Name</mat-label>
+                                    <input formControlName="lastName"   type="text" matInput placeholder="Enter patient last name">
+                                    <mat-error *ngIf="createPatientForm.get('lastName')?.errors?.['required']" >
+                                        Last name is <strong>required</strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="createPatientForm.get('lastName')?.errors?.['minlength']">
+                                        Name length must be at least <strong>3</strong> characters
+                                    </mat-error>
+                                    <mat-error *ngIf="createPatientForm.get('lastName')?.errors?.['maxlength']">
+                                        Name length must be at most <strong>20</strong> characters
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field class="w-100">
+                                    <mat-label>Select gender</mat-label>
+                                    <mat-select formControlName="gender">
+                                        <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                                            {{gender.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="createPatientForm.get('gender')?.errors?.['required']" >
+                                        Gender is <strong>required</strong>
+                                        </mat-error>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Date of birth</mat-label>
+                                    <input formControlName="birthDate"   type="date" matInput placeholder="Date">
+                                    <mat-error *ngIf="createPatientForm.get('birthDate')?.errors?.['required']" >
+                                        Birth date is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input formControlName="email"   type="text" matInput placeholder="Enter patient email">
+                                    <mat-error *ngIf="createPatientForm.get('email')?.errors?.['required']" >
+                                        Email is <strong>required</strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="createPatientForm.get('email')?.errors?.['email']">
+                                        Please enter a valid email address
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Phone</mat-label>
+                                    <input formControlName="phone"   type="text" matInput placeholder="Enter patient phone">
+                                    <mat-error *ngIf="createPatientForm.get('phone')?.errors?.['required']" >
+                                        Phone number is <strong>required</strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="createPatientForm.get('phone')?.errors?.['pattern']">
+                                        Please enter a valid phone number
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <button [disabled]="createPatientForm.invalid" (click)="addPatient()" type="button" class="btn btn-outline-primary d-block ms-auto">Add Patient</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <h2 class="text-center text-success">patient list</h2>
+                            <div class="card shadow p-2">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>first name</th>
+                                            <th>last name</th>
+                                            <th>Gender</th>
+                                            <th>Date of birth</th>
+                                            <th>email</th>
+                                            <th>phone</th>
+                                            <th>action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let patient of patientList">
+                                            <td>{{patient.firstName}}</td>
+                                            <td>{{patient.lastName}}</td>
+                                            <td>{{patient.gender}}</td>
+                                            <td>{{patient.birthDate}}</td>
+                                            <td>{{patient.email}}</td>
+                                            <td>{{patient.phone}}</td>
+                                            <td><button class="btn btn-outline-danger" (click)="deletePatient(patient)">delete</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>   
+    <div class="container mt-5 position-fixed top-50  translate-middle-y end-0">
+        <div class="card col-lg-4 col-md-6 col-sm-12 ms-auto">
+            <div class="card-header">
+                <h1 class="text-center fw-bolder">NASRLLAHGPT</h1>
+            </div>
+            <div class="card-body">
+                <div>
+                    <div *ngIf="generatedText" class="response-container" [innerHtml]="generatedText">   
+                        <!-- <h2><strong>Acne</strong> is a common skin condition that affects people of all ages.</h2>
+                        <p>It is caused by the overproduction of sebum, a natural oil that helps to keep the skin hydrated. When sebum production is excessive, it can clog the pores of the skin, leading to the formation of pimples.</p>
+                        
+                        <h2><strong>Types of Acne</strong></h2>
+                        <ul>
+                            <li><strong>Comedonal acne:</strong> This is the most common type of acne and is characterized by the formation of blackheads and whiteheads. Blackheads are open comedones, while whiteheads are closed comedones.</li>
+                            <li><strong>Inflammatory acne:</strong> This type of acne is characterized by the formation of pimples and cysts. Pimples are small, red bumps that are filled with pus. Cysts are larger, deeper bumps that can be painful.</li>
+                            <li><strong>Nodular acne:</strong> This type of acne is characterized by the formation of large, hard bumps that are located deep within the skin.</li>
+                            <li><strong>Cystic acne:</strong> This is the most severe type of acne and is characterized by the formation of large, pus-filled cysts that can leave scars.</li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                    <div class=" gap-3 d-flex justify-content-between align-items-center">
+                        <input [(ngModel)]="prompt" class="form-control" type="text" id="gemini" placeholder="Chat with nasrallah">
+                        <button title="talk" type="button" class="btn btn-outline-secondary" (click)="generateContent()"><i *ngIf="!loading" class="fa-solid fa-comment-dots"></i> <i *ngIf="loading" class="fa fa-spinner fa-spin"></i></button>
+                    </div>
+                    
+            </div>
+        </div>
+        
+    </div>
+
+</section>

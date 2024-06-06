@@ -1,0 +1,69 @@
+.example-form {
+    min-width: 150px;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  // .card{
+
+  // }
+  .left-side{
+    i{
+      right: 20px;
+      top: 10px;
+    }
+  }
+  .card-body{
+    height: 400px;
+    overflow: auto;
+  }
+  .response-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 100%;
+    min-width: 400px;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .response-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .response-container h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .response-container ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+    list-style-type: disc;
+  }
+  
+  .response-container li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  
+  .response-container p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  .response-container strong {
+    font-weight: bold;
+    color: #000;
+  }
